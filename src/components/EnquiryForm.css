@@ -1,63 +1,55 @@
-/* enquiryform.css */
 .enquiry-form-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .enquiry-form-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    font-weight: 500;
-    margin-bottom: 5px;
-    display: block;
-    color: #555;
-  }
-  
-  .form-control {
-    border-radius: 5px;
-  }
-  
-  .form-control:focus {
-    border-color: #5cb85c;
-    box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
-  }
-  
-  .submit-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #5cb85c;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  
-  .submit-btn:hover {
-    background-color: #4cae4c;
-  }
-  
-  @media (max-width: 576px) {
-    .enquiry-form-container {
-      padding: 15px;
-    }
-  
-    .submit-btn {
-      padding: 12px;
-    }
-  }
-  
+  padding: 50px 0;
+}
+
+.card {
+  border-radius: 10px;
+  border: none;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+.btn-custom {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+.btn-custom:hover {
+  background-color: #0056b3;
+  border-color: #004494;
+}
+
+.invalid-feedback {
+  display: none;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback {
+  display: block;
+}
+
+.was-validated .form-control:valid ~ .invalid-feedback {
+  display: none;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

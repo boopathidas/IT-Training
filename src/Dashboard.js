@@ -1,43 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Dashboard.css'; // Assuming you will create CSS for styling
+import './Dashboard.css'; // Make sure to adjust this CSS file for the new styles
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
-      <h1>Admin Dashboard</h1>
-
-      <div className="dashboard-grid">
-        <div className="dashboard-item">
-          <h3>Enquiry Form</h3>
-          <p>Manage and view all enquiries.</p>
-          <Link to="/enquiry" className="btn btn-primary">Go to Enquiries</Link>
-        </div>
-
-        <div className="dashboard-item">
-          <h3>Registration Form</h3>
-          <p>Register new students.</p>
-          <Link to="/registration" className="btn btn-primary">Go to Registration</Link>
-        </div>
-
-        <div className="dashboard-item">
-          <h3>Courses</h3>
-          <p>Manage course offerings.</p>
-          <Link to="/courses" className="btn btn-primary">Go to Courses</Link>
-        </div>
-
-        <div className="dashboard-item">
-          <h3>Exams</h3>
-          <p>Create and manage exams.</p>
-          <Link to="/exam" className="btn btn-primary">Go to Exams</Link>
-        </div>
-
-        <div className="dashboard-item">
-          <h3>Student Records</h3>
-          <p>View and manage student records.</p>
-          <Link to="/student-records" className="btn btn-primary">Go to Student Records</Link>
-        </div>
-      </div>
+      <h1 className="dashboard-title">Admin Dashboard</h1>
+      <nav className="dashboard-nav">
+        <Link to="/enquiry" className="dashboard-nav-item">Enquiry Form</Link>
+        <Link to="/registration" className="dashboard-nav-item">Registration Form</Link>
+        <Link to="/courses" className="dashboard-nav-item">Courses</Link>
+        <Link to="/exam" className="dashboard-nav-item">Exams</Link>
+        <Link to="/student-records" className="dashboard-nav-item">Student Records</Link>
+      </nav>
     </div>
   );
 }
