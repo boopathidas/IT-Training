@@ -3,84 +3,84 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh; /* Ensures full height on all screens */
+  min-height: 100vh;
   background: linear-gradient(135deg, #2C3E50, #3498DB);
   font-family: 'Poppins', sans-serif;
-  padding: 20px; /* Adds padding for better spacing on mobile */
-  box-sizing: border-box; /* Ensures padding and margins are included in total width/height */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 h1 {
   color: #ffffff;
-  margin-bottom: 40px;
-  font-size: 2rem; /* Further reduce size for very small screens */
+  margin-bottom: 20px; /* Reduced margin for better spacing on mobile */
+  font-size: 5vw; /* Use viewport width for responsive font size */
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  text-align: center; /* Centers the text for better appearance */
+  text-align: center;
 }
 
 .dashboard-nav {
   display: flex;
-  flex-direction: column; /* Stacks items vertically on small screens */
-  gap: 15px; /* Slightly reduce gap for small screens */
-  width: 100%; /* Ensures buttons take full width on mobile */
-  max-width: 400px; /* Limits the width for better readability */
-  box-sizing: border-box; /* Ensures padding/margins are included in total width */
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px; /* Maintain a max-width for readability */
+  box-sizing: border-box;
 }
 
 .dashboard-nav-item {
   text-decoration: none;
   color: #ffffff;
   background-color: #2980b9;
-  padding: 12px 25px; /* Adjust padding for better fit on mobile */
+  padding: 12px; /* Adjust padding */
   border-radius: 50px;
-  font-size: 1rem; /* Slightly reduced for better fit on mobile */
+  font-size: 4vw; /* Responsive font size */
   font-weight: 600;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
-  width: 100%; /* Ensure the button takes full width on mobile */
+  width: 100%;
 }
 
 .dashboard-nav-item:hover {
   background-color: #1abc9c;
-  transform: translateY(-7px) scale(1.05);
+  transform: translateY(-5px) scale(1.02);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .dashboard-nav-item:active {
   background-color: #16a085;
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-3px) scale(1.01);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Media Queries for Responsive Design */
 @media (min-width: 600px) {
   .dashboard-nav {
-    flex-direction: row; /* Changes to row direction on larger screens */
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .dashboard-nav-item {
-    width: 45%; /* Adjusts width for larger screens */
+    width: 45%;
     margin: 10px;
   }
 
   h1 {
-    font-size: 2.5rem; /* Restore larger text size on medium screens */
+    font-size: 2.5rem; /* Larger text for medium screens */
   }
 }
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 3rem; /* Restore larger text size on large screens */
+    font-size: 3rem; /* Larger text for large screens */
   }
 
   .dashboard-nav-item {
-    font-size: 1.1rem; /* Increase button text size for larger screens */
-    padding: 15px 30px; /* Adjust padding for larger screens */
+    font-size: 1.1rem; /* Button text size for larger screens */
+    padding: 15px 30px; /* Padding for larger screens */
   }
 }
