@@ -40,3 +40,28 @@ CREATE TABLE exams (
   duration INT,
   passing_criteria DECIMAL(5, 2)
 );
+
+ALTER TABLE enquiries
+ADD COLUMN course VARCHAR(255);
+select * from enquiries;
+drop table students;
+
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  registrationNumber VARCHAR(255) NOT NULL,
+  dateOfRegistration DATE NOT NULL,
+  dateOfBirth DATE NOT NULL,
+  gender VARCHAR(10),
+  address TEXT,
+  mobile VARCHAR(15),
+  email VARCHAR(255),
+  qualification VARCHAR(50),
+  courseName VARCHAR(255),
+  courseDuration VARCHAR(50),
+  totalFees DECIMAL(10, 2)
+);
+
+SHOW TABLES;
+DESCRIBE students;
+

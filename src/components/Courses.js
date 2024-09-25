@@ -4,8 +4,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Courses.css'; // Custom CSS file
 
 function Courses() {
-  const [courses, setCourses] = useState([]);
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  // Predefined courses
+  const predefinedCourses = [
+    { id: 1, courseName: 'Basic Computers', description: 'Basic computer skills', syllabus: '/static/BASICS_COMPUTER_COURSE.pdf', materials: '#', notes: '#', exams: '#', assessments: '#' },
+    { id: 2, courseName: 'Excel', description: 'Advanced Excel training', syllabus: '#', materials: '#', notes: '#', exams: '#', assessments: '#' },
+    { id: 3, courseName: 'Spoken English', description: 'Improve your spoken English', syllabus: '#', materials: '#', notes: '#', exams: '#', assessments: '#' },
+    { id: 4, courseName: 'Tally', description: 'Tally accounting software', syllabus: '#', materials: '#', notes: '#', exams: '#', assessments: '#' },
+    { id: 5, courseName: 'Python', description: 'Learn Python programming', syllabus: '#', materials: '#', notes: '#', exams: '#', assessments: '#' },
+    { id: 6, courseName: 'Full Stack Development', description: 'Become a full stack developer', syllabus: '#', materials: '#', notes: '#', exams: '#', assessments: '#' }
+  ];
+
+  const [courses, setCourses] = useState([]); // Dynamic courses fetched from the backend
+  const [selectedCourseId, setSelectedCourseId] = useState(null); // Holds the ID of the selected course
+
   const [newCourse, setNewCourse] = useState({
     courseName: '',
     description: '',
@@ -16,6 +27,7 @@ function Courses() {
     assessments: '',
   });
 
+  // Fetch dynamic courses from the backend
   useEffect(() => {
     axios.get('/api/courses')
       .then(response => {
@@ -51,8 +63,9 @@ function Courses() {
       });
   };
 
-  const handleCourseClick = (course) => {
-    setSelectedCourse(course);
+  const handleCourseClick = (courseId) => {
+    // Toggle course details when clicked
+    setSelectedCourseId(courseId === selectedCourseId ? null : courseId);
   };
 
   const handleTest = (courseId) => {
@@ -71,25 +84,49 @@ function Courses() {
       <h2 className="text-center mb-4">Courses</h2>
 
       <div className="row mb-4">
-        {courses.map((course, index) => (
+        {/* Predefined Courses */}
+        {predefinedCourses.map((course) => (
           <div key={course.id} className="col-md-4 mb-3">
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title" onClick={() => handleCourseClick(course)}>
+                <h5 className="card-title" onClick={() => handleCourseClick(course.id)}>
                   {course.courseName}
                 </h5>
-                {selectedCourse && selectedCourse.id === course.id && (
+                {selectedCourseId === course.id && (
                   <div className="course-details mt-2">
-                    <p><strong>Description:</strong> {selectedCourse.description}</p>
-                    <p><strong>Syllabus:</strong> <a href={selectedCourse.syllabus} className="course-link">View Syllabus</a></p>
-                    <p><strong>Materials:</strong> <a href={selectedCourse.materials} className="course-link">View Materials</a></p>
-                    <p><strong>Notes:</strong> <a href={selectedCourse.notes} className="course-link">View Notes</a></p>
-                    <p><strong>Exams:</strong> <a href={selectedCourse.exams} className="course-link">View Exams</a></p>
-                    <p><strong>Assessments:</strong> <a href={selectedCourse.assessments} className="course-link">View Assessments</a></p>
-                    <button
-                      className="btn btn-info mt-2"
-                      onClick={() => handleTest(course.id)}
-                    >
+                    <p><strong>Description:</strong> {course.description}</p>
+                    <p><strong>Syllabus:</strong> <a href={course.syllabus} className="course-link">View Syllabus</a></p>
+                    <p><strong>Materials:</strong> <a href={course.materials} className="course-link">View Materials</a></p>
+                    <p><strong>Notes:</strong> <a href={course.notes} className="course-link">View Notes</a></p>
+                    <p><strong>Exams:</strong> <a href={course.exams} className="course-link">View Exams</a></p>
+                    <p><strong>Assessments:</strong> <a href={course.assessments} className="course-link">View Assessments</a></p>
+                    <button className="btn btn-info mt-2" onClick={() => handleTest(course.id)}>
+                      Take Test
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* Dynamic Courses (Fetched from API) */}
+        {courses.map((course) => (
+          <div key={course.id} className="col-md-4 mb-3">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title" onClick={() => handleCourseClick(course.id)}>
+                  {course.courseName}
+                </h5>
+                {selectedCourseId === course.id && (
+                  <div className="course-details mt-2">
+                    <p><strong>Description:</strong> {course.description}</p>
+                    <p><strong>Syllabus:</strong> <a href={course.syllabus} className="course-link">View Syllabus</a></p>
+                    <p><strong>Materials:</strong> <a href={course.materials} className="course-link">View Materials</a></p>
+                    <p><strong>Notes:</strong> <a href={course.notes} className="course-link">View Notes</a></p>
+                    <p><strong>Exams:</strong> <a href={course.exams} className="course-link">View Exams</a></p>
+                    <p><strong>Assessments:</strong> <a href={course.assessments} className="course-link">View Assessments</a></p>
+                    <button className="btn btn-info mt-2" onClick={() => handleTest(course.id)}>
                       Take Test
                     </button>
                   </div>
@@ -100,6 +137,7 @@ function Courses() {
         ))}
       </div>
 
+      {/* Add New Course Form */}
       <form onSubmit={handleSubmit} className="card p-4 mt-4">
         <h4 className="text-center mb-4">Add New Course</h4>
         <div className="form-group">

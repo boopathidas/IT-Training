@@ -13,9 +13,10 @@ function EnquiryForm() {
     email: '',
     qualification: '',
     gender: '',
+    course: '', // New course field
   });
 
-  const [validated, setValidated] = useState(false); // New state for validation
+  const [validated, setValidated] = useState(false); // State for validation
 
   const navigate = useNavigate();
 
@@ -85,20 +86,7 @@ function EnquiryForm() {
                   />
                   <div className="invalid-feedback">Please enter your name.</div>
                 </div>
-                <div className="form-group mb-3">
-                  <label htmlFor="address">Address</label>
-                  <input 
-                    type="text" 
-                    id="address"
-                    name="address" 
-                    className="form-control" 
-                    value={formData.address} 
-                    onChange={handleChange} 
-                    placeholder="Enter your address" 
-                    required 
-                  />
-                  <div className="invalid-feedback">Please enter your address.</div>
-                </div>
+                
                 <div className="form-group mb-3">
                   <label htmlFor="mobile">Mobile</label>
                   <input 
@@ -128,19 +116,46 @@ function EnquiryForm() {
                   <div className="invalid-feedback">Please enter a valid email address.</div>
                 </div>
                 <div className="form-group mb-3">
+                  <label htmlFor="course">Course</label>
+                  <select 
+                    id="course"
+                    name="course" 
+                    className="form-control" 
+                    value={formData.course} 
+                    onChange={handleChange} 
+                    required
+                  >
+                    <option value="">Select your course</option>
+                    <option value="Basic Computers">Basic Computers</option>
+                    <option value="Excel">Excel</option>
+                    <option value="Tally">Tally</option>
+                    <option value="Spoken English">Spoken English</option>
+                    <option value="Python">Python</option>
+                    <option value="Full Stack Development">Full Stack Development</option>
+                  </select>
+                  <div className="invalid-feedback">Please select a course.</div>
+                </div>
+                <div className="form-group mb-3">
                   <label htmlFor="qualification">Qualification</label>
-                  <input 
-                    type="text" 
+                  <select 
                     id="qualification"
                     name="qualification" 
                     className="form-control" 
                     value={formData.qualification} 
                     onChange={handleChange} 
-                    placeholder="Enter your qualification" 
-                    required 
-                  />
-                  <div className="invalid-feedback">Please enter your qualification.</div>
+                    required
+                  >
+                    <option value="">Select your qualification</option>
+                    <option value="SSLC">SSLC</option>
+                    <option value="PUC">PUC</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Undergraduate">Undergraduate</option>
+                    <option value="Postgraduate">Postgraduate</option>
+                    <option value="Others">Others</option>
+                  </select>
+                  <div className="invalid-feedback">Please select your qualification.</div>
                 </div>
+
                 <div className="form-group mb-4">
                   <label htmlFor="gender">Gender</label>
                   <select 
@@ -157,6 +172,20 @@ function EnquiryForm() {
                     <option value="Other">Other</option>
                   </select>
                   <div className="invalid-feedback">Please select your gender.</div>
+                </div>
+                <div className="form-group mb-3">
+                  <label htmlFor="address">Address</label>
+                  <input 
+                    type="text" 
+                    id="address"
+                    name="address" 
+                    className="form-control" 
+                    value={formData.address} 
+                    onChange={handleChange} 
+                    placeholder="Enter your address" 
+                    required 
+                  />
+                  <div className="invalid-feedback">Please enter your address.</div>
                 </div>
                 <button type="submit" className="btn btn-custom btn-block mt-4">Submit Enquiry</button>
               </form>
